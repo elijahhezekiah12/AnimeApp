@@ -15,6 +15,7 @@ class AnimeViewModel @Inject constructor(
     private val _state = mutableStateOf(AnimeState())
 
     private var _anime = MutableStateFlow<AnimeData?>(null)
+
     val state: State<AnimeState> = _state
 
 }

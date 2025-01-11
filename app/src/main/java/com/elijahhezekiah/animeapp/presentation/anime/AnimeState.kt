@@ -4,6 +4,6 @@ import com.elijahhezekiah.animeapp.domain.model.AnimeData
 
 data class AnimeState(
     val isLoading: Boolean = false,
-    var coins: List<AnimeData> = emptyList(),
+    var anime: AnimeData? = null,
     val error: String = ""
 )

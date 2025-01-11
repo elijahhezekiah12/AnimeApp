@@ -4,6 +4,7 @@ import com.elijahhezekiah.animeapp.common.Constants
 import com.elijahhezekiah.animeapp.data.KitsuApi
 import com.elijahhezekiah.animeapp.data.repository.KitsuRepositoryImpl
 import com.elijahhezekiah.animeapp.domain.repository.KitsuRepository
+import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -17,7 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AnimeModule {
-
 
     @Provides
     @Singleton

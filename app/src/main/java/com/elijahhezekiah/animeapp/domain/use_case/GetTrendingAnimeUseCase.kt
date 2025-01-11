@@ -3,6 +3,7 @@ package com.elijahhezekiah.animeapp.domain.use_case
 import android.util.Log
 import com.elijahhezekiah.animeapp.common.Resource
 import com.elijahhezekiah.animeapp.data.dto.TrendingAnimeListDto
+import com.elijahhezekiah.animeapp.data.repository.KitsuRepositoryImpl
 import com.elijahhezekiah.animeapp.domain.model.AnimeData
 import com.elijahhezekiah.animeapp.domain.repository.KitsuRepository
 import kotlinx.coroutines.flow.Flow
@@ -18,9 +19,9 @@ class GetTrendingAnimeUseCase @Inject constructor(
        try {
            emit(Resource.Loading())
 
-           val anime = repository.getTrendingAnime()
+           val anime = repository.getTrendingAnime()?.toModel()
 
-           emit(Resource.Success(anime?.toModel()))
+           emit(Resource.Success(anime))
 
            Log.d("This are the Anime", "$anime")
 

@@ -1,5 +1,8 @@
 package com.elijahhezekiah.animeapp.data.dto
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class RatingFrequencies(
     val `10`: String,
     val `11`: String,

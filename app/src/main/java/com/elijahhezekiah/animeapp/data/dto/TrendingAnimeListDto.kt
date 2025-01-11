@@ -27,53 +27,47 @@ data class AnimeDataDto(
     val attributes: AttributesDto,
     val id: String,
     val links: Links,
-    val relationships: Relationships,
+    val relationships: RelationshipsDto,
     val type: String
 ){
     fun toModel(): AnimeData =
         AnimeData(
             id = id,
-            attributes = attributes.toModel(),
-            links = links,
-            relationships = relationships,
-            type = type
+            attributes = attributes.toModel()
         )
 }
 
 
 
 data class AttributesDto(
-    val abbreviatedTitles: List<String>,
-    val ageRating: String,
-    val ageRatingGuide: String,
-    val averageRating: String,
-    val canonicalTitle: String,
-    val coverImage: CoverImageDto,
-    val coverImageTopOffset: Int,
     val createdAt: String,
-    val description: String,
-    val endDate: String,
-    val episodeCount: Int,
-    val episodeLength: Int,
-    val favoritesCount: Int,
-    val nextRelease: String,
-    val nsfw: Boolean,
-    val popularityRank: Int,
-    val posterImage: PosterImageDto,
-    val ratingFrequencies: RatingFrequencies,
-    val ratingRank: Int,
-    val showType: String,
-    val slug: String,
-    val startDate: String,
-    val status: String,
-    val subtype: String,
-    val synopsis: String,
-    val tba: String,
-    val titles: TitlesDto,
-    val totalLength: Int,
     val updatedAt: String,
-    val userCount: Int,
-    val youtubeVideoId: String
+    val slug: String?,
+    val synopsis: String?,
+    val coverImageTopOffset: Int,
+    val titles: TitlesDto,
+    val canonicalTitle: String?,
+    val abbreviatedTitles: List<String>,
+    val averageRating: String?,
+    val ratingFrequencies: Map<String,String>,
+    val userCount: Int?,
+    val favoritesCount: Int?,
+    val startDate: String?,
+    val endDate: String?,
+    val popularityRank: Int?,
+    val ratingRank: Int?,
+    val ageRating: String?,
+    val ageRatingGuide: String?,
+    val subtype: String,
+    val status: String,
+    val tba: String?,
+    val posterImage: PosterImageDto,
+    val coverImage: CoverImageDto,
+    val episodeCount: Int?,
+    val episodeLength: Int?,
+    val youtubeVideoId: String?,
+    val showType: String?,
+    val nsfw: Boolean
 ) {
     fun toModel(): Attributes =  Attributes(
             createdAt = createdAt,
@@ -99,29 +93,19 @@ data class AttributesDto(
             userCount = userCount,
             averageRating = averageRating,
             ratingRank = ratingRank,
-            coverImageTopOffset = coverImageTopOffset,
-            description = description,
-            nextRelease = nextRelease,
-            nsfw = nsfw,
-            ratingFrequencies = ratingFrequencies,
-            tba = tba,
-            totalLength = totalLength,
-            youtubeVideoId = youtubeVideoId
         )
 }
 
 
 data class TitlesDto(
-    val en: String,
-    val en_jp: String,
-    val en_us: String,
-    val ja_jp: String
+    val en: String?,
+    val en_jp: String?,
+    val ja_jp: String?
 ) {
     fun toModel(): Titles =
         Titles(
             en = en,
             en_jp = en_jp,
-            en_us = en_us,
             ja_jp = ja_jp
         )
 }
@@ -140,7 +124,6 @@ data class CoverImageDto(
             small = small,
             large = large,
             original = original,
-            meta = meta.toModel()
         )
 }
 
@@ -208,3 +191,28 @@ data class PosterImageDto(
             meta = meta
         )
 }
+
+
+data class RelationshipsDto(
+    val genres: RelationDto,
+    val categories: RelationDto,
+    val castings: RelationDto,
+    val installments: RelationDto,
+    val mappings: RelationDto,
+    val reviews: RelationDto,
+    val mediaRelationships: RelationDto,
+    val episodes: RelationDto,
+    val streamingLinks: RelationDto,
+    val animeProductions: RelationDto,
+    val animeCharacters: RelationDto,
+    val animeStaff: RelationDto
+)
+
+data class RelationDto(
+    val links: RelationLinksDto
+)
+
+data class RelationLinksDto(
+    val self: String,
+    val related: String
+)

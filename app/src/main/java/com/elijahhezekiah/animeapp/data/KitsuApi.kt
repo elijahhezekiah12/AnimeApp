@@ -8,7 +8,7 @@ import retrofit2.http.Path
 
 interface KitsuApi {
     @GET("trending/anime")
-    suspend fun getTrendingAnime():  ApiResponse <TrendingAnimeListDto>
+    suspend fun getTrendingAnime():  TrendingAnimeListDto
 
     @GET("anime/{id}")
     suspend fun getAnimeById(@Path("id") id: Int): AnimeResponseDto

@@ -4,11 +4,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id ("dagger.hilt.android.plugin")
+    alias(libs.plugins.kotlinx.serialization)
 }
 
 android {
     namespace = "com.elijahhezekiah.animeapp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.elijahhezekiah.animeapp"
@@ -59,6 +60,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+
+    // MARK: - Navigation
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.compose)
+
     // Retrofit
     implementation (libs.retrofit)
     implementation (libs.okhttp)
@@ -77,6 +83,7 @@ dependencies {
     implementation(libs.skydoves.sandwich.retrofit)
 
 
+    implementation(libs.kotlinx.serialization.json)
 
     // Coil
     implementation(libs.coil.compose)

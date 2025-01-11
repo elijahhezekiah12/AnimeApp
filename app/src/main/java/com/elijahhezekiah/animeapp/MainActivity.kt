@@ -54,11 +54,12 @@ class MainActivity : ComponentActivity() {
                            )
                        }
 
-                       composable<AnimeRoute> {
+                       composable<AnimeRoute>{
                            val args = it.toRoute<AnimeRoute>()
 
                            AnimeScreen(
                                animatedVisibilityScope = this@composable ,
+                               id = args.id.toInt(),
                                coverImage = args.coverUrl
                            )
                        }

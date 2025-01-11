@@ -29,13 +29,10 @@ class AnimeViewModel @Inject constructor(
     val state: State<AnimeState> = _state
 
     init {
-        savedStateHandle.get<Int>(Constants.PARAM_ANIME_ID_STRING)?.let { animeID ->
-            getAnime(animeID)
-        }
+
     }
 
-
-    private fun getAnime(animeID: Int) {
+    fun getAnime(animeID: Int) {
         getAnimeUseCase(animeID).onEach { result ->
 
             when (result) {
